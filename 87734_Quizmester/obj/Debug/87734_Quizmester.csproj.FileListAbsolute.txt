@@ -1,0 +1,12 @@
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\Database1.mdf
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\Database1_log.ldf
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\87734_Quizmester.exe.config
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\87734_Quizmester.exe
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\87734_Quizmester.pdb
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.csproj.AssemblyReference.cache
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Form1.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Properties.Resources.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.csproj.GenerateResource.cache
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.csproj.CoreCompileInputs.cache
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.exe
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.pdb
