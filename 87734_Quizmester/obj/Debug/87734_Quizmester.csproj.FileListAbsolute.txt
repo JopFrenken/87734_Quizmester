@@ -10,3 +10,6 @@ D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.cspr
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.csproj.CoreCompileInputs.cache
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.exe
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.pdb
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\MySql.Data.dll
+D:\development\87734_Quizmester\87734_Quizmester\bin\Debug\MySql.Data.xml
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.csproj.CopyComplete

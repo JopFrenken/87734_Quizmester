@@ -12,6 +12,14 @@ namespace _87734_Quizmester
 {
     public partial class Form1 : Form
     {
+        // db variables
+        string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
+        RegisterManager registerManager = null;
+
+        // user variables
+        string username = "";
+        string password = "";
+
         // create new buttons dynamically
         Button btnLogin = null;
         Button btnRegInstead = null;
@@ -40,6 +48,9 @@ namespace _87734_Quizmester
             // Attach the event handlers to the buttons
             /*btnLogin.Click += new EventHandler(btnLoginInstead_Click);*/
             btnRegInstead.Click += new EventHandler(btnRegInstead_Click);
+
+            // registermanager instance
+            registerManager = new RegisterManager(connectionString);
         }
 
         private void btnLoginInstead_Click(object sender, EventArgs e)
@@ -74,6 +85,29 @@ namespace _87734_Quizmester
 
             // Change label text
             lblEntryScreen.Text = "Please register";
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if(txtRegUsername.Text == "" || txtRegPassword.Text == "")
+            {
+                MessageBox.Show("Please fill in all your info.");
+                return;
+            }
+
+            username = txtRegUsername.Text;
+            password = txtRegPassword.Text;
+
+            bool registrationResult = registerManager.RegisterUser(username, password);
+
+            if (registrationResult)
+            {
+                MessageBox.Show("Registration successful!");
+            }
+            else
+            {
+                MessageBox.Show("Registration failed. Username may already exist.");
+            }
         }
     }
 }
