@@ -15,6 +15,7 @@ namespace _87734_Quizmester
         // db variables
         string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
         RegisterManager registerManager = null;
+        LoginManager loginManager = null;
 
         // user variables
         string username = "";
@@ -46,11 +47,12 @@ namespace _87734_Quizmester
             btnRegInstead.Visible = false;
 
             // Attach the event handlers to the buttons
-            /*btnLogin.Click += new EventHandler(btnLoginInstead_Click);*/
+            btnLogin.Click += new EventHandler(btnLogin_Click);
             btnRegInstead.Click += new EventHandler(btnRegInstead_Click);
 
-            // registermanager instance
+            // class instances
             registerManager = new RegisterManager(connectionString);
+            loginManager = new LoginManager(connectionString);
         }
 
         private void btnLoginInstead_Click(object sender, EventArgs e)
@@ -98,15 +100,38 @@ namespace _87734_Quizmester
             username = txtRegUsername.Text;
             password = txtRegPassword.Text;
 
+            // Registers user in class
             bool registrationResult = registerManager.RegisterUser(username, password);
 
-            if (registrationResult)
+            if (registrationResult) MessageBox.Show("Registration successful!");
+            else MessageBox.Show("Registration failed. Username may already exist.");
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtRegUsername.Text == "" || txtRegPassword.Text == "")
             {
-                MessageBox.Show("Registration successful!");
+                MessageBox.Show("Please fill in all your info.");
+                return;
+            }
+
+            username = txtRegUsername.Text;
+            password = txtRegPassword.Text;
+
+            // Logins user in the class
+
+            bool loginResult = loginManager.Login(username, password);
+
+            if (loginResult)
+            {
+                // Create and open the Quiz form if login is successful
+                Quiz quizForm = new Quiz(username);
+                quizForm.Show(); 
+                this.Hide(); // Hide the current form
             }
             else
             {
-                MessageBox.Show("Registration failed. Username may already exist.");
+                MessageBox.Show("Incorrect credentials");
             }
         }
     }

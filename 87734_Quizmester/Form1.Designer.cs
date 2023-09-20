@@ -48,8 +48,7 @@ namespace _87734_Quizmester
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(452, 37);
             this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Welcome to the Nintendo Quiz";
-            // 
+            this.lblWelcome.Text = "Welcome to the Nintendo Quiz";            // 
             // txtRegUsername
             // 
             this.txtRegUsername.Location = new System.Drawing.Point(276, 194);
