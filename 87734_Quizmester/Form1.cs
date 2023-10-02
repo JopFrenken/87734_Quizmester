@@ -36,6 +36,8 @@ namespace _87734_Quizmester
             btnLogin = new Button();
             btnRegInstead = new Button();
             btnLogin.Text = "Login";
+            btnLogin.BackColor = Color.White;
+            btnRegInstead.BackColor = Color.White;
             btnRegInstead.Text = "Register instead";
 
             // Add the new buttons to the form

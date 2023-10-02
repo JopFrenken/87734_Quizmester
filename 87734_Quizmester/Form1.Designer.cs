@@ -42,13 +42,14 @@ namespace _87734_Quizmester
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.Black;
-            this.lblWelcome.Location = new System.Drawing.Point(174, 30);
+            this.lblWelcome.Location = new System.Drawing.Point(167, 33);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(452, 37);
+            this.lblWelcome.Size = new System.Drawing.Size(480, 37);
             this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Welcome to the Nintendo Quiz";            // 
+            this.lblWelcome.Text = "Welcome to the Nintendo Quiz";
+            // 
             // txtRegUsername
             // 
             this.txtRegUsername.Location = new System.Drawing.Point(276, 194);
@@ -83,22 +84,24 @@ namespace _87734_Quizmester
             // 
             // btnRegister
             // 
+            this.btnRegister.BackColor = System.Drawing.Color.White;
             this.btnRegister.Location = new System.Drawing.Point(276, 325);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(188, 29);
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnLoginInstead
             // 
+            this.btnLoginInstead.BackColor = System.Drawing.Color.White;
             this.btnLoginInstead.Location = new System.Drawing.Point(276, 399);
             this.btnLoginInstead.Name = "btnLoginInstead";
             this.btnLoginInstead.Size = new System.Drawing.Size(188, 29);
             this.btnLoginInstead.TabIndex = 6;
             this.btnLoginInstead.Text = "Login instead";
-            this.btnLoginInstead.UseVisualStyleBackColor = true;
+            this.btnLoginInstead.UseVisualStyleBackColor = false;
             this.btnLoginInstead.Click += new System.EventHandler(this.btnLoginInstead_Click);
             // 
             // lblEntryScreen
@@ -116,6 +119,7 @@ namespace _87734_Quizmester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblEntryScreen);
             this.Controls.Add(this.btnLoginInstead);

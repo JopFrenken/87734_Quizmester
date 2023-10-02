@@ -24,7 +24,6 @@ class LoginManager
             // Create a MySqlCommand object to execute the SQL query within the connection context.
             using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection))
             {
-                // Add parameters to the SQL query to prevent SQL injection.
                 selectCmd.Parameters.AddWithValue("@username", username); // Set the username parameter.
                 selectCmd.Parameters.AddWithValue("@password", password); // Set the password parameter.
 

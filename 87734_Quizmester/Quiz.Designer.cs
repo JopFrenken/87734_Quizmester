@@ -42,6 +42,7 @@ namespace _87734_Quizmester
             // 
             // btnAnswerOne
             // 
+            this.btnAnswerOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnswerOne.Location = new System.Drawing.Point(29, 216);
             this.btnAnswerOne.Name = "btnAnswerOne";
             this.btnAnswerOne.Size = new System.Drawing.Size(362, 108);
@@ -51,6 +52,7 @@ namespace _87734_Quizmester
             // 
             // btnAnswerTwo
             // 
+            this.btnAnswerTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnswerTwo.Location = new System.Drawing.Point(411, 216);
             this.btnAnswerTwo.Name = "btnAnswerTwo";
             this.btnAnswerTwo.Size = new System.Drawing.Size(362, 108);
@@ -60,6 +62,7 @@ namespace _87734_Quizmester
             // 
             // btnAnswerFour
             // 
+            this.btnAnswerFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnswerFour.Location = new System.Drawing.Point(411, 330);
             this.btnAnswerFour.Name = "btnAnswerFour";
             this.btnAnswerFour.Size = new System.Drawing.Size(362, 106);
@@ -69,6 +72,7 @@ namespace _87734_Quizmester
             // 
             // btnAnswerThree
             // 
+            this.btnAnswerThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnswerThree.Location = new System.Drawing.Point(29, 330);
             this.btnAnswerThree.Name = "btnAnswerThree";
             this.btnAnswerThree.Size = new System.Drawing.Size(362, 108);
@@ -78,7 +82,7 @@ namespace _87734_Quizmester
             // 
             // lblQuestion
             // 
-            this.lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuestion.Location = new System.Drawing.Point(29, 63);
             this.lblQuestion.Name = "lblQuestion";
             this.lblQuestion.Size = new System.Drawing.Size(744, 150);
@@ -113,6 +117,7 @@ namespace _87734_Quizmester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblScore);
