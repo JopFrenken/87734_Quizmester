@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Media;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +14,38 @@ namespace _87734_Quizmester
     public partial class Quiz : Form
     {
         string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
+
         string username;
         int count = 0;
-        int score = 0;
-        int time = 30;
+        int score;
+        int time;
+
         List<Question> questions = new List<Question>();
         QuestionManager questionManager = null;
         LeaderboardManager leaderboardManager = null;
 
-        public Quiz(string username)
+        private SoundPlayer soundPlayerCorrect;
+        private SoundPlayer soundPlayerWrong;
+
+        public Quiz(string username, string category, int score, int time)
         {
             InitializeComponent();
             this.username = username;
-            questionManager = new QuestionManager(connectionString);
+            this.score = score;
+            this.time = time;
+
+            lblScore.Text = $"Score: {score.ToString()}";
+            lblTime.Text = $"Time left: {time.ToString()}";
+
+            questionManager = new QuestionManager(connectionString, category);
             leaderboardManager = new LeaderboardManager(connectionString);
+
+            // add audio files for wrong/correct
         }
 
         private void Quiz_Load(object sender, EventArgs e)
         {
-            questions = questionManager.GetAllQuestions();
+            questions = questionManager.GetRandomQuestions();
             Random random = new Random();
 
             // randomize question order
@@ -41,8 +55,18 @@ namespace _87734_Quizmester
             tmrQuiz.Start();
         }
 
+        // event for all buttons
         private void allButtons_Click(object sender, EventArgs e)
         {
+            // Disable all buttons to prevent further clicks
+            foreach (Control control in Controls)
+            {
+                if (control is Button button)
+                {
+                    button.Enabled = false;
+                }
+            }
+
             if (sender is Button clickedButton)
             {
                 string buttonText = clickedButton.Text;
@@ -52,16 +76,47 @@ namespace _87734_Quizmester
                 if (buttonText == currentQuestion.CorrectAnswer)
                 {
                     score++;
+                    lblScore.Text = $"Score: {score.ToString()}";
                 }
 
-                LoadQuestion(count);
-                lblScore.Text = $"Score: {score.ToString()}";
+                if (count == 5)
+                {
+                    tmrQuiz.Stop();
+                    CategoryForm categoryForm = new CategoryForm(time, score, username);
+                    categoryForm.Show();
+                    this.Hide();
+
+                    return;
+                }
+
+
+                // Wait for 1 second and then re-enable the buttons
+                Timer enableButtonsTimer = new Timer();
+                enableButtonsTimer.Interval = 1000; // 1 second
+                enableButtonsTimer.Tick += (s, ev) =>
+                {
+                    // Re-enable all buttons
+                    foreach (Control control in Controls)
+                    {
+                        if (control is Button button)
+                        {
+                            button.Enabled = true;
+                        }
+                    }
+
+                    // Stop the timer after enabling buttons
+                    enableButtonsTimer.Stop();
+                };
+
+                enableButtonsTimer.Start();
+
+                LoadQuestion(count);        
             }   
         }
 
         private void tmrQuiz_Tick(object sender, EventArgs e)
         {
-            // counts the time down from 30 to 0
+            // counts the time down 
             time--;
             lblTime.Text = $"Time left: {time}";
 

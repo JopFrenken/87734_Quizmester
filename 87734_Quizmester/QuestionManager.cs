@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 namespace _87734_Quizmester
 {
     class QuestionManager
     {
-        // variables
         private string connectionString;
+        private string category;
+        private static List<int> usedQuestionIds;
 
-        // constructor
-        public QuestionManager(string c_connectionString)
+        public QuestionManager(string c_connectionString, string c_category)
         {
             connectionString = c_connectionString;
+            category = c_category;
+            usedQuestionIds = new List<int>();
         }
 
-        // methods
-        public List<Question> GetAllQuestions()
+        public List<Question> GetRandomQuestions()
         {
             List<Question> questions = new List<Question>();
 
@@ -27,14 +26,26 @@ namespace _87734_Quizmester
             {
                 connection.Open();
 
-                // Get all questions
-                string questionQuery = "SELECT * FROM questions";
+                // Get random questions based on the specified category and limit to 5 questions
+                string questionQuery = "SELECT * FROM questions WHERE category = @Category";
+
+                // extra sql to make sure there are no repeated questions
+                if (usedQuestionIds.Any())
+                {
+                    questionQuery += " AND id NOT IN (" + string.Join(",", usedQuestionIds) + ")";
+                }
+
+                questionQuery += " ORDER BY RAND() LIMIT 5";
                 MySqlCommand command = new MySqlCommand(questionQuery, connection);
+                command.Parameters.AddWithValue("@Category", category);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        int questionId = reader.GetInt32("id");
+                        usedQuestionIds.Add(questionId); // Add the used question ID to the list
+
                         // Create a Question object for each row in the database
                         Question question = new Question
                         {

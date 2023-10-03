@@ -29,6 +29,7 @@ namespace _87734_Quizmester
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.txtRegUsername = new System.Windows.Forms.TextBox();
             this.txtRegPassword = new System.Windows.Forms.TextBox();
@@ -37,6 +38,13 @@ namespace _87734_Quizmester
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnLoginInstead = new System.Windows.Forms.Button();
             this.lblEntryScreen = new System.Windows.Forms.Label();
+            this.TEST = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tEST2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TEST.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWelcome
@@ -44,22 +52,23 @@ namespace _87734_Quizmester
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.Black;
-            this.lblWelcome.Location = new System.Drawing.Point(167, 33);
+            this.lblWelcome.Location = new System.Drawing.Point(26, 28);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(480, 37);
+            this.lblWelcome.Size = new System.Drawing.Size(531, 37);
             this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "Welcome to the Nintendo Quiz";
+            this.lblWelcome.Text = "Welcome to the Video Game Quiz";
+            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
             // 
             // txtRegUsername
             // 
-            this.txtRegUsername.Location = new System.Drawing.Point(276, 194);
+            this.txtRegUsername.Location = new System.Drawing.Point(175, 192);
             this.txtRegUsername.Name = "txtRegUsername";
             this.txtRegUsername.Size = new System.Drawing.Size(188, 20);
             this.txtRegUsername.TabIndex = 1;
             // 
             // txtRegPassword
             // 
-            this.txtRegPassword.Location = new System.Drawing.Point(276, 267);
+            this.txtRegPassword.Location = new System.Drawing.Point(175, 265);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.Size = new System.Drawing.Size(188, 20);
             this.txtRegPassword.TabIndex = 2;
@@ -67,7 +76,7 @@ namespace _87734_Quizmester
             // lblRegUsername
             // 
             this.lblRegUsername.AutoSize = true;
-            this.lblRegUsername.Location = new System.Drawing.Point(273, 167);
+            this.lblRegUsername.Location = new System.Drawing.Point(172, 165);
             this.lblRegUsername.Name = "lblRegUsername";
             this.lblRegUsername.Size = new System.Drawing.Size(55, 13);
             this.lblRegUsername.TabIndex = 3;
@@ -76,7 +85,7 @@ namespace _87734_Quizmester
             // lblRegPassword
             // 
             this.lblRegPassword.AutoSize = true;
-            this.lblRegPassword.Location = new System.Drawing.Point(273, 239);
+            this.lblRegPassword.Location = new System.Drawing.Point(172, 237);
             this.lblRegPassword.Name = "lblRegPassword";
             this.lblRegPassword.Size = new System.Drawing.Size(53, 13);
             this.lblRegPassword.TabIndex = 4;
@@ -85,7 +94,7 @@ namespace _87734_Quizmester
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(276, 325);
+            this.btnRegister.Location = new System.Drawing.Point(175, 323);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(188, 29);
             this.btnRegister.TabIndex = 5;
@@ -96,7 +105,7 @@ namespace _87734_Quizmester
             // btnLoginInstead
             // 
             this.btnLoginInstead.BackColor = System.Drawing.Color.White;
-            this.btnLoginInstead.Location = new System.Drawing.Point(276, 399);
+            this.btnLoginInstead.Location = new System.Drawing.Point(175, 397);
             this.btnLoginInstead.Name = "btnLoginInstead";
             this.btnLoginInstead.Size = new System.Drawing.Size(188, 29);
             this.btnLoginInstead.TabIndex = 6;
@@ -109,18 +118,56 @@ namespace _87734_Quizmester
             this.lblEntryScreen.AutoSize = true;
             this.lblEntryScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEntryScreen.ForeColor = System.Drawing.Color.Black;
-            this.lblEntryScreen.Location = new System.Drawing.Point(294, 95);
+            this.lblEntryScreen.Location = new System.Drawing.Point(193, 93);
             this.lblEntryScreen.Name = "lblEntryScreen";
             this.lblEntryScreen.Size = new System.Drawing.Size(157, 26);
             this.lblEntryScreen.TabIndex = 7;
             this.lblEntryScreen.Text = "Please register";
+            // 
+            // TEST
+            // 
+            this.TEST.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textToolStripMenuItem});
+            this.TEST.Name = "TEST";
+            this.TEST.Size = new System.Drawing.Size(95, 26);
+            // 
+            // textToolStripMenuItem
+            // 
+            this.textToolStripMenuItem.Name = "textToolStripMenuItem";
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textToolStripMenuItem.Text = "text";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tEST2ToolStripMenuItem});
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.testToolStripMenuItem.Text = "test";
+            // 
+            // tEST2ToolStripMenuItem
+            // 
+            this.tEST2ToolStripMenuItem.Name = "tEST2ToolStripMenuItem";
+            this.tEST2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tEST2ToolStripMenuItem.Text = "TEST 2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(584, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblEntryScreen);
             this.Controls.Add(this.btnLoginInstead);
             this.Controls.Add(this.btnRegister);
@@ -129,9 +176,13 @@ namespace _87734_Quizmester
             this.Controls.Add(this.txtRegPassword);
             this.Controls.Add(this.txtRegUsername);
             this.Controls.Add(this.lblWelcome);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.TEST.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +198,11 @@ namespace _87734_Quizmester
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnLoginInstead;
         private System.Windows.Forms.Label lblEntryScreen;
+        private System.Windows.Forms.ContextMenuStrip TEST;
+        private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tEST2ToolStripMenuItem;
     }
 }
 

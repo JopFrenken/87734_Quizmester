@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Media;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,17 @@ namespace _87734_Quizmester
         Button btnLogin = null;
         Button btnRegInstead = null;
 
+        private SoundPlayer soundPlayer;
+
         public Form1()
         {
             InitializeComponent();
+
+
+            // Combine the executable directory with the relative path to your audio file
+            string audioFilePath = @"..\..\..\sound\welcome.wav";
+
+            soundPlayer = new SoundPlayer(audioFilePath);
         }
 
         // creates the new items once the form loads
@@ -126,15 +135,27 @@ namespace _87734_Quizmester
 
             if (loginResult)
             {
-                // Create and open the Quiz form if login is successful
-                Quiz quizForm = new Quiz(username);
-                quizForm.Show(); 
+                // Create and open the Category form if login is successful
+                CategoryForm categoryForm = new CategoryForm(30, 0, username);
+                categoryForm.Show(); 
                 this.Hide(); // Hide the current form
             }
             else
             {
                 MessageBox.Show("Incorrect credentials");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*CategoryForm categoryform = new CategoryForm(12,12);
+            categoryform.Show();*/
+        }
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+            // Play the audio file
+            soundPlayer.Play();
         }
     }
 }

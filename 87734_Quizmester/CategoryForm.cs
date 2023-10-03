@@ -12,9 +12,46 @@ namespace _87734_Quizmester
 {
     public partial class CategoryForm : Form
     {
-        public CategoryForm()
+        string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
+        List<Category> categories = new List<Category>();
+        CategoryManager categoryManager = null;
+
+        int time = 0;
+        int score = 0;
+        string username = "";
+
+        public CategoryForm(int time, int score, string username)
         {
             InitializeComponent();
+            this.time = time;
+            this.score = score;
+            this.username = username;
+            categoryManager = new CategoryManager(connectionString);
+        }
+
+        private void CategoryForm_Load(object sender, EventArgs e)
+        {
+            // gets two random categories
+            categories = categoryManager.GetTwoCategories();
+
+            if (categories.Count >= 2) // Ensure there are at least two categories
+            {
+                btnLeftCategory.Text = categories[0].CategoryName;
+                btnRightCategory.Text = categories[1].CategoryName;
+            }
+
+            lblScore.Text = "Score: " + score.ToString();
+            lblTimeLeft.Text = "Time Left: " + time.ToString();
+        }
+
+        private void allButtons_Click(object sender, EventArgs e)
+        {
+            if (sender is Button clickedButton)
+            {
+                Quiz quiz = new Quiz(username, clickedButton.Text, score, time);
+                quiz.Show();
+                this.Hide();
+            }
         }
     }
 }
