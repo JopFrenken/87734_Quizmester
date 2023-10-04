@@ -32,7 +32,7 @@ namespace _87734_Quizmester
             InitializeComponent();
             this.username = username;
             this.score = score;
-            this.time = time;
+            this.time = 5;
 
             lblScore.Text = $"Score: {score.ToString()}";
             lblTime.Text = $"Time left: {time.ToString()}";
@@ -40,7 +40,11 @@ namespace _87734_Quizmester
             questionManager = new QuestionManager(connectionString, category);
             leaderboardManager = new LeaderboardManager(connectionString);
 
-            // add audio files for wrong/correct
+            string audioFilePathCorrect = @"..\..\..\sound\ding.wav";
+            string audioFilePathWrong = @"..\..\..\sound\wrong.wav";
+
+            soundPlayerCorrect = new SoundPlayer(audioFilePathCorrect);
+            soundPlayerWrong = new SoundPlayer(audioFilePathWrong);
         }
 
         private void Quiz_Load(object sender, EventArgs e)
@@ -77,6 +81,10 @@ namespace _87734_Quizmester
                 {
                     score++;
                     lblScore.Text = $"Score: {score.ToString()}";
+                    soundPlayerCorrect.Play();
+                } else
+                {
+                    soundPlayerWrong.Play();
                 }
 
                 if (count == 5)
@@ -141,11 +149,29 @@ namespace _87734_Quizmester
 
         public void storeLeaderboard(string username, int score)
         {
-            // stores score after game ended and loads leaderboard
+            // stores score after the game ended and shows a custom messagebox
             leaderboardManager.AddLeaderboardEntry(username, score);
-            Leaderboard lb = new Leaderboard();
-            lb.Show();
-            this.Hide();
+
+            string message = "Game ended. Click 'OK' to view the leaderboard.";
+            string caption = "Game Over";
+
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            DialogResult result;
+
+            // Display MessageBox with OKCancel buttons
+            result = MessageBox.Show(message, caption, buttons);
+
+            // If user clicks 'OK', show the leaderboard;
+            if (result == DialogResult.OK)
+            {
+                Leaderboard lb = new Leaderboard();
+                lb.Show();
+                lb.BringToFront();
+                this.Hide();
+            } else
+            {
+                Application.Exit();
+            }
         }
     }
 }

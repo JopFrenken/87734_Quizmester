@@ -33,12 +33,12 @@ namespace _87734_Quizmester
             InitializeComponent();
 
 
-            // Combine the executable directory with the relative path to your audio file
+            // relative path to your audio file
             string audioFilePath = @"..\..\..\sound\welcome.wav";
 
             soundPlayer = new SoundPlayer(audioFilePath);
         }
-
+        
         // creates the new items once the form loads
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -156,6 +156,18 @@ namespace _87734_Quizmester
         {
             // Play the audio file
             soundPlayer.Play();
+        }
+
+        private void tmiRules_Click(object sender, EventArgs e)
+        {
+            string rules = "1. You have to create an account to play. \n2. You have to choose a category in order to play. \n3. Each category has 5 questions before you can choose another category. \n4. Have fun!";
+            MessageBox.Show(rules);
+        }
+
+        private void tmiCredits_Click(object sender, EventArgs e)
+        {
+            string credits = "This game was made by Jop Frenken.\nMy GitHub page: https://github.com/JopFrenken";
+            MessageBox.Show(credits);
         }
     }
 }

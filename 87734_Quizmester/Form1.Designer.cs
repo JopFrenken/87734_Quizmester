@@ -41,8 +41,9 @@ namespace _87734_Quizmester
             this.TEST = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tEST2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmMenuBar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiRules = new System.Windows.Forms.ToolStripMenuItem();
+            this.tmiCredits = new System.Windows.Forms.ToolStripMenuItem();
             this.TEST.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -134,32 +135,41 @@ namespace _87734_Quizmester
             // textToolStripMenuItem
             // 
             this.textToolStripMenuItem.Name = "textToolStripMenuItem";
-            this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.textToolStripMenuItem.Text = "text";
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testToolStripMenuItem});
+            this.tsmMenuBar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // testToolStripMenuItem
+            // tsmMenuBar
             // 
-            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tEST2ToolStripMenuItem});
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.testToolStripMenuItem.Text = "test";
+            this.tsmMenuBar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmiRules,
+            this.tmiCredits});
+            this.tsmMenuBar.Name = "tsmMenuBar";
+            this.tsmMenuBar.Size = new System.Drawing.Size(71, 20);
+            this.tsmMenuBar.Text = "More Info";
             // 
-            // tEST2ToolStripMenuItem
+            // tmiRules
             // 
-            this.tEST2ToolStripMenuItem.Name = "tEST2ToolStripMenuItem";
-            this.tEST2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tEST2ToolStripMenuItem.Text = "TEST 2";
+            this.tmiRules.Name = "tmiRules";
+            this.tmiRules.Size = new System.Drawing.Size(180, 22);
+            this.tmiRules.Text = "Game Rules";
+            this.tmiRules.Click += new System.EventHandler(this.tmiRules_Click);
+            // 
+            // tmiCredits
+            // 
+            this.tmiCredits.Name = "tmiCredits";
+            this.tmiCredits.Size = new System.Drawing.Size(180, 22);
+            this.tmiCredits.Text = "Credits";
+            this.tmiCredits.Click += new System.EventHandler(this.tmiCredits_Click);
             // 
             // Form1
             // 
@@ -201,8 +211,9 @@ namespace _87734_Quizmester
         private System.Windows.Forms.ContextMenuStrip TEST;
         private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tEST2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmMenuBar;
+        private System.Windows.Forms.ToolStripMenuItem tmiRules;
+        private System.Windows.Forms.ToolStripMenuItem tmiCredits;
     }
 }
 
