@@ -21,7 +21,7 @@ namespace _87734_Quizmester
         // methods
 
         // Get all leaderboard entries
-        public List<LeaderboardEntry> GetAllLeaderboardEntries()
+        public List<LeaderboardEntry> GetAllLeaderboardEntries(bool hasCategories)
         {
             List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
 
@@ -30,8 +30,9 @@ namespace _87734_Quizmester
                 connection.Open();
 
                 // Get all leaderboard entries
-                string leaderboardQuery = "SELECT * FROM leaderboard";
+                string leaderboardQuery = "SELECT * FROM leaderboard WHERE has_categories = @hasCategories";
                 MySqlCommand command = new MySqlCommand(leaderboardQuery, connection);
+                command.Parameters.AddWithValue("@hasCategories", hasCategories);
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -53,20 +54,21 @@ namespace _87734_Quizmester
         }
 
         // Add a new leaderboard entry
-        public bool AddLeaderboardEntry(string username, int score)
+        public bool AddLeaderboardEntry(string username, int score, bool has_categories)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
                 // Insert a new leaderboard entry
-                string insertQuery = "INSERT INTO leaderboard (username, score) VALUES (@username, @score)";
+                string insertQuery = "INSERT INTO leaderboard (username, score, has_categories) VALUES (@username, @score, @has_categories)";
 
                 using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection))
                 {
 
                     insertCmd.Parameters.AddWithValue("@username", username);
                     insertCmd.Parameters.AddWithValue("@score", score);
+                    insertCmd.Parameters.AddWithValue("@has_categories", has_categories);
 
                     int rowsAffected = insertCmd.ExecuteNonQuery();
 

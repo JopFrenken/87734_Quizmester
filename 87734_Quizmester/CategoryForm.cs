@@ -19,13 +19,15 @@ namespace _87734_Quizmester
         int time = 0;
         int score = 0;
         string username = "";
+        bool skipped;
 
-        public CategoryForm(int time, int score, string username)
+        public CategoryForm(int time, int score, string username, bool skipped)
         {
             InitializeComponent();
             this.time = time;
             this.score = score;
             this.username = username;
+            this.skipped = skipped;
             categoryManager = new CategoryManager(connectionString);
         }
 
@@ -48,7 +50,7 @@ namespace _87734_Quizmester
         {
             if (sender is Button clickedButton)
             {
-                Quiz quiz = new Quiz(username, clickedButton.Text, score, time);
+                Quiz quiz = new Quiz(username, clickedButton.Text, score, time, false, skipped);
                 quiz.Show();
                 this.Hide();
             }

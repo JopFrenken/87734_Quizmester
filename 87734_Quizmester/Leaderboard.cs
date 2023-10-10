@@ -15,16 +15,22 @@ namespace _87734_Quizmester
         LeaderboardManager leaderBoardManager = null;
         string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
         List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
+        bool has_categories;
+        int score;
 
-        public Leaderboard()
+        public Leaderboard(bool has_categories, int score)
         {
             InitializeComponent();
+            this.has_categories = has_categories;
+            this.score = score;
         }
 
         private void Leaderboard_Load(object sender, EventArgs e)
         {
+            lblTitle.Text = has_categories ? "Category Leaderboard" : "Normal Leaderboard";
+
             leaderBoardManager = new LeaderboardManager(connectionString);
-            entries = leaderBoardManager.GetAllLeaderboardEntries();
+            entries = leaderBoardManager.GetAllLeaderboardEntries(has_categories);
             entries = entries.OrderByDescending(entry => entry.Score).ToList();
 
             // first 10
@@ -32,6 +38,14 @@ namespace _87734_Quizmester
 
             // add to leaderboard
             leaderboardView.DataSource = entries;
+
+            // says your score on the form
+            lblYourScore.Text = $"Your Score: {score.ToString()}";
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

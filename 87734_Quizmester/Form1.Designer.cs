@@ -36,7 +36,7 @@ namespace _87734_Quizmester
             this.lblRegUsername = new System.Windows.Forms.Label();
             this.lblRegPassword = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnLoginInstead = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.lblEntryScreen = new System.Windows.Forms.Label();
             this.TEST = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +62,7 @@ namespace _87734_Quizmester
             // 
             // txtRegUsername
             // 
+            this.txtRegUsername.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtRegUsername.Location = new System.Drawing.Point(175, 192);
             this.txtRegUsername.Name = "txtRegUsername";
             this.txtRegUsername.Size = new System.Drawing.Size(188, 20);
@@ -69,6 +70,7 @@ namespace _87734_Quizmester
             // 
             // txtRegPassword
             // 
+            this.txtRegPassword.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtRegPassword.Location = new System.Drawing.Point(175, 265);
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.Size = new System.Drawing.Size(188, 20);
@@ -94,25 +96,27 @@ namespace _87734_Quizmester
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(175, 323);
+            this.btnRegister.BackColor = System.Drawing.Color.Honeydew;
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(175, 308);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(188, 29);
+            this.btnRegister.Size = new System.Drawing.Size(188, 55);
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // btnLoginInstead
+            // btnLogin
             // 
-            this.btnLoginInstead.BackColor = System.Drawing.Color.White;
-            this.btnLoginInstead.Location = new System.Drawing.Point(175, 397);
-            this.btnLoginInstead.Name = "btnLoginInstead";
-            this.btnLoginInstead.Size = new System.Drawing.Size(188, 29);
-            this.btnLoginInstead.TabIndex = 6;
-            this.btnLoginInstead.Text = "Login instead";
-            this.btnLoginInstead.UseVisualStyleBackColor = false;
-            this.btnLoginInstead.Click += new System.EventHandler(this.btnLoginInstead_Click);
+            this.btnLogin.BackColor = System.Drawing.Color.LightCyan;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(175, 383);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(188, 55);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblEntryScreen
             // 
@@ -160,14 +164,14 @@ namespace _87734_Quizmester
             // tmiRules
             // 
             this.tmiRules.Name = "tmiRules";
-            this.tmiRules.Size = new System.Drawing.Size(180, 22);
+            this.tmiRules.Size = new System.Drawing.Size(136, 22);
             this.tmiRules.Text = "Game Rules";
             this.tmiRules.Click += new System.EventHandler(this.tmiRules_Click);
             // 
             // tmiCredits
             // 
             this.tmiCredits.Name = "tmiCredits";
-            this.tmiCredits.Size = new System.Drawing.Size(180, 22);
+            this.tmiCredits.Size = new System.Drawing.Size(136, 22);
             this.tmiCredits.Text = "Credits";
             this.tmiCredits.Click += new System.EventHandler(this.tmiCredits_Click);
             // 
@@ -175,11 +179,11 @@ namespace _87734_Quizmester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 450);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblEntryScreen);
-            this.Controls.Add(this.btnLoginInstead);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.lblRegPassword);
             this.Controls.Add(this.lblRegUsername);
@@ -206,7 +210,7 @@ namespace _87734_Quizmester
         private System.Windows.Forms.Label lblRegUsername;
         private System.Windows.Forms.Label lblRegPassword;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnLoginInstead;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblEntryScreen;
         private System.Windows.Forms.ContextMenuStrip TEST;
         private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;

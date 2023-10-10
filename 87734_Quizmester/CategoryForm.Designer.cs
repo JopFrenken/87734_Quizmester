@@ -48,24 +48,26 @@ namespace _87734_Quizmester
             // 
             // btnLeftCategory
             // 
-            this.btnLeftCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLeftCategory.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnLeftCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeftCategory.Location = new System.Drawing.Point(57, 161);
             this.btnLeftCategory.Name = "btnLeftCategory";
             this.btnLeftCategory.Size = new System.Drawing.Size(253, 140);
             this.btnLeftCategory.TabIndex = 1;
             this.btnLeftCategory.Text = "button1";
-            this.btnLeftCategory.UseVisualStyleBackColor = true;
+            this.btnLeftCategory.UseVisualStyleBackColor = false;
             this.btnLeftCategory.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // btnRightCategory
             // 
-            this.btnRightCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRightCategory.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnRightCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRightCategory.Location = new System.Drawing.Point(410, 161);
             this.btnRightCategory.Name = "btnRightCategory";
             this.btnRightCategory.Size = new System.Drawing.Size(253, 140);
             this.btnRightCategory.TabIndex = 2;
             this.btnRightCategory.Text = "button2";
-            this.btnRightCategory.UseVisualStyleBackColor = true;
+            this.btnRightCategory.UseVisualStyleBackColor = false;
             this.btnRightCategory.Click += new System.EventHandler(this.allButtons_Click);
             // 
             // lblScore
@@ -92,7 +94,7 @@ namespace _87734_Quizmester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(724, 313);
             this.Controls.Add(this.lblTimeLeft);
             this.Controls.Add(this.lblScore);

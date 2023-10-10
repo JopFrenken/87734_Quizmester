@@ -19,6 +19,8 @@ namespace _87734_Quizmester
         int count = 0;
         int score;
         int time;
+        bool random;
+        bool skipped = false;
 
         List<Question> questions = new List<Question>();
         QuestionManager questionManager = null;
@@ -27,41 +29,67 @@ namespace _87734_Quizmester
         private SoundPlayer soundPlayerCorrect;
         private SoundPlayer soundPlayerWrong;
 
-        public Quiz(string username, string category, int score, int time)
+        public Quiz(string username, string category, int score, int time, bool random, bool skipped)
         {
             InitializeComponent();
+            // constructor variables
             this.username = username;
             this.score = score;
-            this.time = 5;
+            this.time = time;
+            this.random = random;
+            this.skipped = skipped;
 
             lblScore.Text = $"Score: {score.ToString()}";
             lblTime.Text = $"Time left: {time.ToString()}";
 
+            // class instances
             questionManager = new QuestionManager(connectionString, category);
             leaderboardManager = new LeaderboardManager(connectionString);
 
+            // audio paths and soundplayers
             string audioFilePathCorrect = @"..\..\..\sound\ding.wav";
             string audioFilePathWrong = @"..\..\..\sound\wrong.wav";
-
             soundPlayerCorrect = new SoundPlayer(audioFilePathCorrect);
             soundPlayerWrong = new SoundPlayer(audioFilePathWrong);
+
+            // subscribe to closing event
+            this.FormClosing += new FormClosingEventHandler(this.Quiz_Closing);
         }
 
         private void Quiz_Load(object sender, EventArgs e)
         {
-            questions = questionManager.GetRandomQuestions();
-            Random random = new Random();
-
-            // randomize question order
-            questions = questions.OrderBy(x => random.Next()).ToList();
-
+            // gets either all questions or 5 questions for a specific category
+            if(random == true)
+            {
+                questions = questionManager.GetRandomQuestions();
+                Shuffle(questions);
+            } else
+            {
+                questions = questionManager.GetQuestionsByCategory();
+                Shuffle(questions);
+            }
+            
             LoadQuestion(count);
             tmrQuiz.Start();
+
+            if(skipped == true)
+            {
+                btnSkip.Enabled = false;
+                btnSkip.BackColor = Color.Violet;
+                btnSkip.Text = "Skip Question (0)";
+                btnSkip.ForeColor = Color.Black;
+            }
         }
+
+        // resets used in database when closing
+        private void Quiz_Closing(object sender, FormClosingEventArgs e)
+        {
+            questionManager.ResetQuiz();
+        }   
 
         // event for all buttons
         private void allButtons_Click(object sender, EventArgs e)
-        {
+        { 
             // Disable all buttons to prevent further clicks
             foreach (Control control in Controls)
             {
@@ -82,6 +110,7 @@ namespace _87734_Quizmester
                     score++;
                     lblScore.Text = $"Score: {score.ToString()}";
                     soundPlayerCorrect.Play();
+
                 } else
                 {
                     soundPlayerWrong.Play();
@@ -89,18 +118,21 @@ namespace _87734_Quizmester
 
                 if (count == 5)
                 {
-                    tmrQuiz.Stop();
-                    CategoryForm categoryForm = new CategoryForm(time, score, username);
-                    categoryForm.Show();
-                    this.Hide();
+                    if (random == false)
+                    {
+                        tmrQuiz.Stop();
+                        CategoryForm categoryForm = new CategoryForm(time, score, username, skipped);
+                        categoryForm.Show();
+                        this.Hide();
 
-                    return;
+                        return;
+                    }
                 }
 
 
-                // Wait for 1 second and then re-enable the buttons
+                // Wait a bit and then re-enable the buttons
                 Timer enableButtonsTimer = new Timer();
-                enableButtonsTimer.Interval = 1000; // 1 second
+                enableButtonsTimer.Interval = 750;
                 enableButtonsTimer.Tick += (s, ev) =>
                 {
                     // Re-enable all buttons
@@ -122,6 +154,18 @@ namespace _87734_Quizmester
             }   
         }
 
+        // skips question, but can only be used once
+        private void btnSkip_Click(object sender, EventArgs e)
+        {
+            count++;
+            skipped = true;
+            LoadQuestion(count);
+            btnSkip.Enabled = false;
+            btnSkip.BackColor = Color.Violet;
+            btnSkip.Text = "Skip Question (0)";
+            btnSkip.ForeColor = Color.Black;
+        }
+
         private void tmrQuiz_Tick(object sender, EventArgs e)
         {
             // counts the time down 
@@ -132,25 +176,54 @@ namespace _87734_Quizmester
             {
                 tmrQuiz.Stop();
                 storeLeaderboard(username, score);
+
+                // resets the quiz's used boolean
+                questionManager.ResetQuiz();
             }
         }
 
         // All methods
+        // Loads the next question
         public void LoadQuestion(int index)
         {
-            // loads the question based on index
-            Question currentQuestion = questions[index];
-            lblQuestion.Text = currentQuestion.QuestionText;
-            btnAnswerOne.Text = currentQuestion.Answer1;
-            btnAnswerTwo.Text = currentQuestion.Answer2;
-            btnAnswerThree.Text = currentQuestion.Answer3;
-            btnAnswerFour.Text = currentQuestion.Answer4;
+            if (index >= 0 && index < questions.Count)
+            {
+                // loads the question based on index
+                Question currentQuestion = questions[index];
+                lblQuestion.Text = currentQuestion.QuestionText;
+
+                // Create a list to store answer choices
+                List<string> answerChoices = new List<string>
+                {
+                    currentQuestion.Answer1,
+                    currentQuestion.Answer2,
+                    currentQuestion.Answer3,
+                    currentQuestion.Answer4
+                };
+
+                // Shuffle the answer choices
+                Shuffle(answerChoices);
+
+                // Assign shuffled answer choices to buttons
+                btnAnswerOne.Text = answerChoices[0];
+                btnAnswerTwo.Text = answerChoices[1];
+                btnAnswerThree.Text = answerChoices[2];
+                btnAnswerFour.Text = answerChoices[3];
+            }
         }
 
+        // stores the user and score in database
         public void storeLeaderboard(string username, int score)
         {
             // stores score after the game ended and shows a custom messagebox
-            leaderboardManager.AddLeaderboardEntry(username, score);
+            // 2 seperate leaderboards, 1 for random, 1 for categories
+            if(random == true)
+            {
+                leaderboardManager.AddLeaderboardEntry(username, score, false);
+            } else
+            {
+                leaderboardManager.AddLeaderboardEntry(username, score, true);
+            }
 
             string message = "Game ended. Click 'OK' to view the leaderboard.";
             string caption = "Game Over";
@@ -161,10 +234,12 @@ namespace _87734_Quizmester
             // Display MessageBox with OKCancel buttons
             result = MessageBox.Show(message, caption, buttons);
 
-            // If user clicks 'OK', show the leaderboard;
+            // If user clicks ok, show the leaderboard;
             if (result == DialogResult.OK)
             {
-                Leaderboard lb = new Leaderboard();
+                // Shows leaderboard depending on whether they had categories or not
+                bool has_categories = random == true ? false : true;
+                Leaderboard lb = new Leaderboard(has_categories, score);
                 lb.Show();
                 lb.BringToFront();
                 this.Hide();
@@ -173,5 +248,21 @@ namespace _87734_Quizmester
                 Application.Exit();
             }
         }
+        
+        // Fisher-Yates shuffle algorithm
+        private void Shuffle<T>(List<T> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
     }
 }
