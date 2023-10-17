@@ -164,14 +164,14 @@ namespace _87734_Quizmester
             // tmiRules
             // 
             this.tmiRules.Name = "tmiRules";
-            this.tmiRules.Size = new System.Drawing.Size(136, 22);
+            this.tmiRules.Size = new System.Drawing.Size(180, 22);
             this.tmiRules.Text = "Game Rules";
             this.tmiRules.Click += new System.EventHandler(this.tmiRules_Click);
             // 
             // tmiCredits
             // 
             this.tmiCredits.Name = "tmiCredits";
-            this.tmiCredits.Size = new System.Drawing.Size(136, 22);
+            this.tmiCredits.Size = new System.Drawing.Size(180, 22);
             this.tmiCredits.Text = "Credits";
             this.tmiCredits.Click += new System.EventHandler(this.tmiCredits_Click);
             // 

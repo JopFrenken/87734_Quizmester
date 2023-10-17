@@ -52,6 +52,7 @@ namespace _87734_Quizmester
             this.leaderboardView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.leaderboardView.Location = new System.Drawing.Point(24, 108);
             this.leaderboardView.Name = "leaderboardView";
+            this.leaderboardView.ReadOnly = true;
             this.leaderboardView.Size = new System.Drawing.Size(647, 244);
             this.leaderboardView.TabIndex = 0;
             // 

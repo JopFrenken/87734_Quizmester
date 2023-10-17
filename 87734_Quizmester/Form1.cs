@@ -85,13 +85,13 @@ namespace _87734_Quizmester
                     if (result == DialogResult.Yes)
                     {
                         // Create and open the Category form if the user clicks Yes
-                        CategoryForm categoryForm = new CategoryForm(30, 0, username, false);
+                        CategoryForm categoryForm = new CategoryForm(50, 0, username, false);
                         categoryForm.Show();
                         this.Hide(); // Hide the current form
                     }
                     else
                     {
-                        Quiz quizform = new Quiz(username, "none", 0, 30, true, false);
+                        Quiz quizform = new Quiz(username, "none", 0, 50, true, false);
                         quizform.Show();
                         this.Hide();
                     }
@@ -111,7 +111,7 @@ namespace _87734_Quizmester
 
         private void tmiRules_Click(object sender, EventArgs e)
         {
-            string rules = "1. You have to create an account to play. \n2. You have to choose a category in order to play. \n3. Each category has 5 questions before you can choose another category. \n4. Have fun!";
+            string rules = "1. You have to create an account to play. \n2. You can play with categories. \n3. Each category has 5 questions before you can choose another category. \n4. Have fun!";
             MessageBox.Show(rules);
         }
 

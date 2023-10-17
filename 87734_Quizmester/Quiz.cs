@@ -19,12 +19,14 @@ namespace _87734_Quizmester
         int count = 0;
         int score;
         int time;
+        int questionTime = 10;
         bool random;
         bool skipped = false;
 
         List<Question> questions = new List<Question>();
         QuestionManager questionManager = null;
         LeaderboardManager leaderboardManager = null;
+        LoginManager loginManager = null;
 
         private SoundPlayer soundPlayerCorrect;
         private SoundPlayer soundPlayerWrong;
@@ -58,6 +60,7 @@ namespace _87734_Quizmester
 
         private void Quiz_Load(object sender, EventArgs e)
         {
+            loginManager = new LoginManager(connectionString);
             // gets either all questions or 5 questions for a specific category
             if(random == true)
             {
@@ -101,10 +104,16 @@ namespace _87734_Quizmester
 
             if (sender is Button clickedButton)
             {
+                // checks which button has been clicked
                 string buttonText = clickedButton.Text;
                 Question currentQuestion = questions[count];
                 count++;
 
+                questionTime = 10;
+                lblQuestionTime.Text = $"Time left on question: {questionTime}";
+                lblQuestionTime.ForeColor = Color.Black;
+
+                // if correct add score
                 if (buttonText == currentQuestion.CorrectAnswer)
                 {
                     score++;
@@ -116,6 +125,7 @@ namespace _87734_Quizmester
                     soundPlayerWrong.Play();
                 }
 
+                // after 5 questions, loads the category form up so players have to choose a new category
                 if (count == 5)
                 {
                     if (random == false)
@@ -182,12 +192,32 @@ namespace _87734_Quizmester
             }
         }
 
+        // timer limit per question
+        private void tmrQuestion_Tick(object sender, EventArgs e)
+        {
+            questionTime--;
+            lblQuestionTime.Text = $"Time left on question: {questionTime}";
+
+            if (questionTime == 3) lblQuestionTime.ForeColor = Color.Red;
+
+            if (questionTime == 0)
+            {
+                tmrQuestion.Stop();
+                count++;
+                questionTime = 10;
+                lblQuestionTime.Text = $"Time left on question: {questionTime}";
+                lblQuestionTime.ForeColor = Color.Black;
+                LoadQuestion(count);
+            }
+        }
+
         // All methods
         // Loads the next question
         public void LoadQuestion(int index)
         {
             if (index >= 0 && index < questions.Count)
             {
+                tmrQuestion.Start();
                 // loads the question based on index
                 Question currentQuestion = questions[index];
                 lblQuestion.Text = currentQuestion.QuestionText;
@@ -209,6 +239,12 @@ namespace _87734_Quizmester
                 btnAnswerTwo.Text = answerChoices[1];
                 btnAnswerThree.Text = answerChoices[2];
                 btnAnswerFour.Text = answerChoices[3];
+            }
+            else
+            {
+                // There are no more questions
+                MessageBox.Show("Congratulations! You have completed all the questions.", "Quiz Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                storeLeaderboard(username, score);
             }
         }
 
@@ -264,5 +300,24 @@ namespace _87734_Quizmester
             }
         }
 
+        private void adminPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isAdmin = loginManager.CheckIfAdmin(username);
+
+            if (isAdmin)
+            {
+                AdminForm adminform = new AdminForm(username);
+                this.Hide();
+                tmrQuestion.Stop();
+                tmrQuiz.Stop();
+                adminform.ShowDialog();
+                tmrQuestion.Start();
+                tmrQuiz.Start();
+            }
+            else
+            {
+                MessageBox.Show("Forbidden. User not Admin");
+            }
+        }
     }
 }

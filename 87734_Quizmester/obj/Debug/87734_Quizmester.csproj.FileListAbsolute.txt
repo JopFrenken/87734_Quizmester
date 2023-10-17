@@ -16,3 +16,6 @@ D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\87734_Quizmester.cspr
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Quiz.resources
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Leaderboard.resources
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.CategoryForm.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.AdminForm.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Custom_Input_Forms.AddUserForm.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Custom_Input_Forms.EditUserForm.resources
