@@ -44,7 +44,7 @@ namespace _87734_Quizmester.Custom_Input_Forms
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.Size = new System.Drawing.Size(125, 38);
             this.btnEditUser.TabIndex = 11;
-            this.btnEditUser.Text = "Edit New User";
+            this.btnEditUser.Text = "Edit user";
             this.btnEditUser.UseVisualStyleBackColor = true;
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
@@ -84,11 +84,11 @@ namespace _87734_Quizmester.Custom_Input_Forms
             // 
             this.lblEditUser.AutoSize = true;
             this.lblEditUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditUser.Location = new System.Drawing.Point(85, 22);
+            this.lblEditUser.Location = new System.Drawing.Point(110, 22);
             this.lblEditUser.Name = "lblEditUser";
-            this.lblEditUser.Size = new System.Drawing.Size(159, 29);
+            this.lblEditUser.Size = new System.Drawing.Size(108, 29);
             this.lblEditUser.TabIndex = 6;
-            this.lblEditUser.Text = "Edit new user";
+            this.lblEditUser.Text = "Edit user";
             // 
             // EditUserForm
             // 

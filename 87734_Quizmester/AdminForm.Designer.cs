@@ -37,6 +37,9 @@ namespace _87734_Quizmester
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.accountsView = new System.Windows.Forms.DataGridView();
             this.gbxQuestion = new System.Windows.Forms.GroupBox();
+            this.btnDeleteQuestion = new System.Windows.Forms.Button();
+            this.btnEditQuestion = new System.Windows.Forms.Button();
+            this.btnCreateQuestion = new System.Windows.Forms.Button();
             this.questionsView = new System.Windows.Forms.DataGridView();
             this.gbxAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountsView)).BeginInit();
@@ -132,6 +135,9 @@ namespace _87734_Quizmester
             // 
             // gbxQuestion
             // 
+            this.gbxQuestion.Controls.Add(this.btnDeleteQuestion);
+            this.gbxQuestion.Controls.Add(this.btnEditQuestion);
+            this.gbxQuestion.Controls.Add(this.btnCreateQuestion);
             this.gbxQuestion.Controls.Add(this.questionsView);
             this.gbxQuestion.Location = new System.Drawing.Point(388, 96);
             this.gbxQuestion.Name = "gbxQuestion";
@@ -140,13 +146,52 @@ namespace _87734_Quizmester
             this.gbxQuestion.TabStop = false;
             this.gbxQuestion.Text = "Question Managing";
             // 
+            // btnDeleteQuestion
+            // 
+            this.btnDeleteQuestion.BackColor = System.Drawing.Color.Tomato;
+            this.btnDeleteQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteQuestion.Location = new System.Drawing.Point(203, 418);
+            this.btnDeleteQuestion.Name = "btnDeleteQuestion";
+            this.btnDeleteQuestion.Size = new System.Drawing.Size(147, 54);
+            this.btnDeleteQuestion.TabIndex = 7;
+            this.btnDeleteQuestion.Text = "Delete question";
+            this.btnDeleteQuestion.UseVisualStyleBackColor = false;
+            this.btnDeleteQuestion.Click += new System.EventHandler(this.btnDeleteQuestion_Click);
+            // 
+            // btnEditQuestion
+            // 
+            this.btnEditQuestion.BackColor = System.Drawing.Color.Khaki;
+            this.btnEditQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditQuestion.Location = new System.Drawing.Point(374, 418);
+            this.btnEditQuestion.Name = "btnEditQuestion";
+            this.btnEditQuestion.Size = new System.Drawing.Size(147, 54);
+            this.btnEditQuestion.TabIndex = 6;
+            this.btnEditQuestion.Text = "Edit question";
+            this.btnEditQuestion.UseVisualStyleBackColor = false;
+            this.btnEditQuestion.Click += new System.EventHandler(this.btnEditQuestion_Click);
+            // 
+            // btnCreateQuestion
+            // 
+            this.btnCreateQuestion.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnCreateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateQuestion.Location = new System.Drawing.Point(30, 418);
+            this.btnCreateQuestion.Name = "btnCreateQuestion";
+            this.btnCreateQuestion.Size = new System.Drawing.Size(147, 54);
+            this.btnCreateQuestion.TabIndex = 5;
+            this.btnCreateQuestion.Text = "Create question";
+            this.btnCreateQuestion.UseVisualStyleBackColor = false;
+            this.btnCreateQuestion.Click += new System.EventHandler(this.btnCreateQuestion_Click);
+            // 
             // questionsView
             // 
             this.questionsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.questionsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.questionsView.Location = new System.Drawing.Point(30, 30);
             this.questionsView.Name = "questionsView";
-            this.questionsView.Size = new System.Drawing.Size(491, 297);
+            this.questionsView.Size = new System.Drawing.Size(491, 348);
             this.questionsView.TabIndex = 1;
             this.questionsView.SelectionChanged += new System.EventHandler(this.datagridViews_SelectionChanged);
             // 
@@ -181,5 +226,8 @@ namespace _87734_Quizmester
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
+        private System.Windows.Forms.Button btnDeleteQuestion;
+        private System.Windows.Forms.Button btnEditQuestion;
+        private System.Windows.Forms.Button btnCreateQuestion;
     }
 }

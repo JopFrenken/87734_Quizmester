@@ -81,11 +81,23 @@
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="Custom_Input_Forms\AddQuestionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom_Input_Forms\AddQuestionForm.Designer.cs">
+      <DependentUpon>AddQuestionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom_Input_Forms\AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Custom_Input_Forms\AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom_Input_Forms\EditQuestionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom_Input_Forms\EditQuestionForm.Designer.cs">
+      <DependentUpon>EditQuestionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom_Input_Forms\EditUserForm.cs">
       <SubType>Form</SubType>
@@ -126,8 +138,14 @@
     <EmbeddedResource Include="CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Custom_Input_Forms\AddQuestionForm.resx">
+      <DependentUpon>AddQuestionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Custom_Input_Forms\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom_Input_Forms\EditQuestionForm.resx">
+      <DependentUpon>EditQuestionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom_Input_Forms\EditUserForm.resx">
       <DependentUpon>EditUserForm.cs</DependentUpon>

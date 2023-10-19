@@ -25,5 +25,8 @@ namespace _87734_Quizmester
 
         // The correct answer to the question
         public string CorrectAnswer { get; set; }
+
+        // The category of the question
+        public string Category { get; set; }
     }
 }

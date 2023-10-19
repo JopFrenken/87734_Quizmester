@@ -50,7 +50,7 @@ namespace _87734_Quizmester.Custom_Input_Forms
                 MessageBox.Show("User edited succesfully.");
                 this.Hide();
             }
-            else MessageBox.Show("User edited failed.");
+            else MessageBox.Show("User edit failed.");
         }
     }
 }

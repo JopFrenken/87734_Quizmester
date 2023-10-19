@@ -174,5 +174,67 @@ namespace _87734_Quizmester
         }
 
         #endregion
+        #region question managing
+        private void btnCreateQuestion_Click(object sender, EventArgs e)
+        {
+            AddQuestionForm addQuestionForm = new AddQuestionForm();
+            addQuestionForm.ShowDialog();
+
+            // Refresh the DataGridView 
+            questions = adminManager.GetAllQuestions();
+            questionsView.DataSource = null;
+            questionsView.DataSource = questions;
+        }
+
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+            // guard clause, so that users have to click a row to edit a user
+            if (questionText == "")
+            {
+                MessageBox.Show("Please select a row before editing a question.");
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this question?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // succesfully deletes user
+                bool questionDeleted = adminManager.DeleteQuestion(questionText);
+
+                if (questionDeleted) MessageBox.Show("Question deleted successfully.");
+                else MessageBox.Show("Question does not exist.");
+
+
+                // refresh datagridview
+                questions = adminManager.GetAllQuestions();
+                questionsView.DataSource = null;
+                questionsView.DataSource = questions;
+            }
+        }
+
+        private void btnEditQuestion_Click(object sender, EventArgs e)
+        {
+            // guard clause makes sure user has to click on question row
+            if(questionText == "")
+            {
+                MessageBox.Show("Please select a row before editing a question.");
+                return;
+            }
+
+            Question clickedQuestion = adminManager.GetQuestionByQuestionText(questionText);
+            EditQuestionForm editQuestionForm = new EditQuestionForm(
+                clickedQuestion.QuestionText,  clickedQuestion.Answer1, clickedQuestion.Answer2, clickedQuestion.Answer3, clickedQuestion.Answer4, clickedQuestion.CorrectAnswer
+            );
+
+            editQuestionForm.ShowDialog();
+
+            // Refresh the DataGridView 
+            questions = adminManager.GetAllQuestions();
+            questionsView.DataSource = null;
+            questionsView.DataSource = questions;
+        }
+        #endregion
     }
 }
