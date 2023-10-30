@@ -44,6 +44,7 @@ namespace _87734_Quizmester
             this.tsmMenuBar = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiRules = new System.Windows.Forms.ToolStripMenuItem();
             this.tmiCredits = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnViewLb = new System.Windows.Forms.Button();
             this.TEST.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@ namespace _87734_Quizmester
             this.txtRegPassword.Name = "txtRegPassword";
             this.txtRegPassword.Size = new System.Drawing.Size(188, 20);
             this.txtRegPassword.TabIndex = 2;
+            this.txtRegPassword.UseSystemPasswordChar = true;
             // 
             // lblRegUsername
             // 
@@ -175,12 +177,25 @@ namespace _87734_Quizmester
             this.tmiCredits.Text = "Credits";
             this.tmiCredits.Click += new System.EventHandler(this.tmiCredits_Click);
             // 
+            // btnViewLb
+            // 
+            this.btnViewLb.BackColor = System.Drawing.Color.Moccasin;
+            this.btnViewLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewLb.Location = new System.Drawing.Point(175, 481);
+            this.btnViewLb.Name = "btnViewLb";
+            this.btnViewLb.Size = new System.Drawing.Size(188, 55);
+            this.btnViewLb.TabIndex = 10;
+            this.btnViewLb.Text = "View Leaderboard";
+            this.btnViewLb.UseVisualStyleBackColor = false;
+            this.btnViewLb.Click += new System.EventHandler(this.btnViewLb_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(584, 450);
+            this.ClientSize = new System.Drawing.Size(584, 548);
+            this.Controls.Add(this.btnViewLb);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblEntryScreen);
             this.Controls.Add(this.btnLogin);
@@ -218,6 +233,7 @@ namespace _87734_Quizmester
         private System.Windows.Forms.ToolStripMenuItem tsmMenuBar;
         private System.Windows.Forms.ToolStripMenuItem tmiRules;
         private System.Windows.Forms.ToolStripMenuItem tmiCredits;
+        private System.Windows.Forms.Button btnViewLb;
     }
 }
 

@@ -167,6 +167,8 @@ namespace _87734_Quizmester
         // skips question, but can only be used once
         private void btnSkip_Click(object sender, EventArgs e)
         {
+            questionTime = 10;
+            lblQuestionTime.Text = $"Time left on question: {questionTime}";
             count++;
             skipped = true;
             LoadQuestion(count);
@@ -240,7 +242,7 @@ namespace _87734_Quizmester
                 btnAnswerThree.Text = answerChoices[2];
                 btnAnswerFour.Text = answerChoices[3];
             }
-            else
+            else if (questions.Count == 0)
             {
                 // There are no more questions
                 MessageBox.Show("Congratulations! You have completed all the questions.", "Quiz Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);

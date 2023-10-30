@@ -111,7 +111,7 @@ namespace _87734_Quizmester
 
         private void tmiRules_Click(object sender, EventArgs e)
         {
-            string rules = "1. You have to create an account to play. \n2. You can play with categories. \n3. Each category has 5 questions before you can choose another category. \n4. Have fun!";
+            string rules = "1. You have to create an account to play. \n2. You can play with categories. \n3. Each category has 5 questions before you can choose another category. \n4. Play with sound if possible! \n5. Have fun!";
             MessageBox.Show(rules);
         }
 
@@ -119,6 +119,14 @@ namespace _87734_Quizmester
         {
             string credits = "This game was made by Jop Frenken.\nMy GitHub page: https://github.com/JopFrenken";
             MessageBox.Show(credits);
+        }
+
+        // pulls up leaderboard without having to log in
+        private void btnViewLb_Click(object sender, EventArgs e)
+        {
+            Leaderboard leaderboard = new Leaderboard(false, 0);
+            leaderboard.Show();
+            this.Hide();
         }
     }
 }
