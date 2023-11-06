@@ -80,21 +80,9 @@ namespace _87734_Quizmester
             {
                 if (loginResult)
                 {
-                    DialogResult result = MessageBox.Show("Do you want to play with categories?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.Yes)
-                    {
-                        // Create and open the Category form if the user clicks Yes
-                        CategoryForm categoryForm = new CategoryForm(50, 0, username, false);
-                        categoryForm.Show();
-                        this.Hide(); // Hide the current form
-                    }
-                    else
-                    {
-                        Quiz quizform = new Quiz(username, "none", 0, 50, true, false);
-                        quizform.Show();
-                        this.Hide();
-                    }
+                    Gamemode gamemodeForm = new Gamemode(username);
+                    gamemodeForm.Show();
+                    this.Hide();
                 }
             }
             else
@@ -124,9 +112,22 @@ namespace _87734_Quizmester
         // pulls up leaderboard without having to log in
         private void btnViewLb_Click(object sender, EventArgs e)
         {
-            Leaderboard leaderboard = new Leaderboard(false, 0);
-            leaderboard.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("Press yes to see the category leaderboard, press no to see the normal leaderboard", "Leaderboard Selection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // User wants to see the category leaderboard
+                Leaderboard leaderboard = new Leaderboard(true, false, 0);
+                leaderboard.Show();
+                this.Hide();
+            }
+            else
+            {
+                // User wants to see the normal leaderboard
+                Leaderboard leaderboard = new Leaderboard(false, false, 0);
+                leaderboard.Show();
+                this.Hide();
+            }
         }
     }
 }

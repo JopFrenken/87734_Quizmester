@@ -20,14 +20,20 @@ namespace _87734_Quizmester
         int score = 0;
         string username = "";
         bool skipped;
+        bool usedRidOfTwo;
+        int questionIndex;
+        int specialIndex;
 
-        public CategoryForm(int time, int score, string username, bool skipped)
+        public CategoryForm(int time, int score, string username, bool skipped, bool usedRidOfTwo, int questionIndex, int specialIndex)
         {
             InitializeComponent();
             this.time = time;
             this.score = score;
             this.username = username;
             this.skipped = skipped;
+            this.usedRidOfTwo = usedRidOfTwo;
+            this.questionIndex = questionIndex;
+            this.specialIndex = specialIndex;
             categoryManager = new CategoryManager(connectionString);
         }
 
@@ -50,7 +56,7 @@ namespace _87734_Quizmester
         {
             if (sender is Button clickedButton)
             {
-                Quiz quiz = new Quiz(username, clickedButton.Text, score, time, false, skipped);
+                Quiz quiz = new Quiz(username, clickedButton.Text, score, time, false, skipped, usedRidOfTwo, questionIndex, false, specialIndex);
                 quiz.Show();
                 this.Hide();
             }

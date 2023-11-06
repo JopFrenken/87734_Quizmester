@@ -113,6 +113,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamemode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamemode.Designer.cs">
+      <DependentUpon>Gamemode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leaderboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamemode.resx">
+      <DependentUpon>Gamemode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leaderboard.resx">
       <DependentUpon>Leaderboard.cs</DependentUpon>

@@ -45,7 +45,11 @@ namespace _87734_Quizmester
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRidOfTwo = new System.Windows.Forms.Button();
+            this.lblSpecial = new System.Windows.Forms.Label();
+            this.pcxCorrectWrong = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcxCorrectWrong)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAnswerOne
@@ -132,7 +136,7 @@ namespace _87734_Quizmester
             this.btnSkip.ForeColor = System.Drawing.Color.White;
             this.btnSkip.Location = new System.Drawing.Point(29, 484);
             this.btnSkip.Name = "btnSkip";
-            this.btnSkip.Size = new System.Drawing.Size(744, 66);
+            this.btnSkip.Size = new System.Drawing.Size(362, 66);
             this.btnSkip.TabIndex = 7;
             this.btnSkip.Text = "Skip Question (1)";
             this.btnSkip.UseVisualStyleBackColor = false;
@@ -184,9 +188,39 @@ namespace _87734_Quizmester
             // adminPanelToolStripMenuItem
             // 
             this.adminPanelToolStripMenuItem.Name = "adminPanelToolStripMenuItem";
-            this.adminPanelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adminPanelToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.adminPanelToolStripMenuItem.Text = "Admin Panel";
             this.adminPanelToolStripMenuItem.Click += new System.EventHandler(this.adminPanelToolStripMenuItem_Click);
+            // 
+            // btnRidOfTwo
+            // 
+            this.btnRidOfTwo.BackColor = System.Drawing.Color.Cyan;
+            this.btnRidOfTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRidOfTwo.Location = new System.Drawing.Point(411, 484);
+            this.btnRidOfTwo.Name = "btnRidOfTwo";
+            this.btnRidOfTwo.Size = new System.Drawing.Size(362, 66);
+            this.btnRidOfTwo.TabIndex = 11;
+            this.btnRidOfTwo.Text = "50/50 (1)";
+            this.btnRidOfTwo.UseVisualStyleBackColor = false;
+            this.btnRidOfTwo.Click += new System.EventHandler(this.btnRidOfTwo_Click);
+            // 
+            // lblSpecial
+            // 
+            this.lblSpecial.AutoSize = true;
+            this.lblSpecial.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecial.Location = new System.Drawing.Point(671, 55);
+            this.lblSpecial.Name = "lblSpecial";
+            this.lblSpecial.Size = new System.Drawing.Size(0, 25);
+            this.lblSpecial.TabIndex = 12;
+            // 
+            // pcxCorrectWrong
+            // 
+            this.pcxCorrectWrong.Location = new System.Drawing.Point(376, 62);
+            this.pcxCorrectWrong.Name = "pcxCorrectWrong";
+            this.pcxCorrectWrong.Size = new System.Drawing.Size(60, 60);
+            this.pcxCorrectWrong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcxCorrectWrong.TabIndex = 13;
+            this.pcxCorrectWrong.TabStop = false;
             // 
             // Quiz
             // 
@@ -194,6 +228,9 @@ namespace _87734_Quizmester
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 558);
+            this.Controls.Add(this.pcxCorrectWrong);
+            this.Controls.Add(this.lblSpecial);
+            this.Controls.Add(this.btnRidOfTwo);
             this.Controls.Add(this.lblQuestionTime);
             this.Controls.Add(this.lblQuizName);
             this.Controls.Add(this.btnSkip);
@@ -211,6 +248,7 @@ namespace _87734_Quizmester
             this.Load += new System.EventHandler(this.Quiz_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcxCorrectWrong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +271,8 @@ namespace _87734_Quizmester
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminPanelToolStripMenuItem;
+        private System.Windows.Forms.Button btnRidOfTwo;
+        private System.Windows.Forms.Label lblSpecial;
+        private System.Windows.Forms.PictureBox pcxCorrectWrong;
     }
 }

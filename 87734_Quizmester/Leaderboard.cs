@@ -16,22 +16,31 @@ namespace _87734_Quizmester
         string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
         List<LeaderboardEntry> entries = new List<LeaderboardEntry>();
         bool has_categories;
+        bool is_special;
         int score;
 
-        public Leaderboard(bool has_categories, int score)
+        public Leaderboard(bool has_categories, bool is_special, int score)
         {
             InitializeComponent();
             this.has_categories = has_categories;
+            this.is_special = is_special;
             this.score = score;
         }
 
         private void Leaderboard_Load(object sender, EventArgs e)
         {
-            lblTitle.Text = has_categories ? "Category Leaderboard" : "Normal Leaderboard";
+            lblTitle.Text = has_categories ? "Category Leaderboard" : (is_special ? "Special Leaderboard" : "Normal Leaderboard");
 
             leaderBoardManager = new LeaderboardManager(connectionString);
-            entries = leaderBoardManager.GetAllLeaderboardEntries(has_categories);
-            entries = entries.OrderByDescending(entry => entry.Score).ToList();
+            entries = leaderBoardManager.GetAllLeaderboardEntries(has_categories, is_special);
+            
+            if(!is_special)
+            {
+                entries = entries.OrderByDescending(entry => entry.Score).ToList();
+            } else
+            {
+                entries = entries.OrderBy(entry => entry.Score).ToList();
+            }
 
             // first 10
             entries = entries.Take(10).ToList();
@@ -48,4 +57,5 @@ namespace _87734_Quizmester
             Application.Restart();
         }
     }
+
 }

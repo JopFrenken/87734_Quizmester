@@ -21,7 +21,7 @@ namespace _87734_Quizmester
         // methods
 
         // Get all leaderboard entries
-        public List<LeaderboardEntry> GetAllLeaderboardEntries(bool hasCategories)
+        public List<LeaderboardEntry> GetAllLeaderboardEntries(bool hasCategories, bool isSpecial)
         {
             List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
 
@@ -29,23 +29,27 @@ namespace _87734_Quizmester
             {
                 connection.Open();
 
-                // Get all leaderboard entries
-                string leaderboardQuery = "SELECT * FROM leaderboard WHERE has_categories = @hasCategories";
-                MySqlCommand command = new MySqlCommand(leaderboardQuery, connection);
-                command.Parameters.AddWithValue("@hasCategories", hasCategories);
+                // Get leaderboard entries based on hasCategories and isSpecial flags
+                string leaderboardQuery = "SELECT * FROM leaderboard WHERE has_categories = @hasCategories AND is_special = @isSpecial";
 
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlCommand command = new MySqlCommand(leaderboardQuery, connection))
                 {
-                    while (reader.Read())
-                    {
-                        // Create a LeaderboardEntry object for each row in the database
-                        LeaderboardEntry entry = new LeaderboardEntry
-                        {
-                            Username = reader.GetString("username"),
-                            Score = reader.GetInt32("score")
-                        };
+                    command.Parameters.AddWithValue("@hasCategories", hasCategories);
+                    command.Parameters.AddWithValue("@isSpecial", isSpecial);
 
-                        leaderboardEntries.Add(entry);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            LeaderboardEntry entry = new LeaderboardEntry
+                            {
+                                // Assuming your database schema includes columns like "Username", "Score", etc.
+                                Username = reader.GetString("Username"),
+                                Score = reader.GetInt32("Score"),
+                                // ... other properties
+                            };
+                            leaderboardEntries.Add(entry);
+                        }
                     }
                 }
             }
@@ -53,15 +57,16 @@ namespace _87734_Quizmester
             return leaderboardEntries;
         }
 
+
         // Add a new leaderboard entry
-        public bool AddLeaderboardEntry(string username, int score, bool has_categories)
+        public bool AddLeaderboardEntry(string username, int score, bool has_categories, bool is_special)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
                 // Insert a new leaderboard entry
-                string insertQuery = "INSERT INTO leaderboard (username, score, has_categories) VALUES (@username, @score, @has_categories)";
+                string insertQuery = "INSERT INTO leaderboard (username, score, has_categories, is_special) VALUES (@username, @score, @has_categories, @is_special)";
 
                 using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection))
                 {
@@ -69,6 +74,7 @@ namespace _87734_Quizmester
                     insertCmd.Parameters.AddWithValue("@username", username);
                     insertCmd.Parameters.AddWithValue("@score", score);
                     insertCmd.Parameters.AddWithValue("@has_categories", has_categories);
+                    insertCmd.Parameters.AddWithValue("@is_special", is_special);
 
                     int rowsAffected = insertCmd.ExecuteNonQuery();
 

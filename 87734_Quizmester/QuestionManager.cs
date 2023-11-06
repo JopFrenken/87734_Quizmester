@@ -96,7 +96,7 @@ namespace _87734_Quizmester
 
             return questions;
         }
-
+        
         private void MarkQuestionAsUsed(int questionId)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
