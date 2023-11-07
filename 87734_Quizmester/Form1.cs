@@ -51,6 +51,12 @@ namespace _87734_Quizmester
                 return;
             }
 
+            if (txtRegUsername.Text.Length > 12 || txtRegPassword.Text.Length > 12)
+            {
+                MessageBox.Show("Username and password must be 12 characters or less.");
+                return;
+            }
+
             username = txtRegUsername.Text;
             password = txtRegPassword.Text;
 
@@ -85,10 +91,7 @@ namespace _87734_Quizmester
                     this.Hide();
                 }
             }
-            else
-            {
-                MessageBox.Show("Incorrect credentials");
-            }
+            else MessageBox.Show("Incorrect credentials");
         }
 
         private void lblWelcome_Click(object sender, EventArgs e)
@@ -99,7 +102,7 @@ namespace _87734_Quizmester
 
         private void tmiRules_Click(object sender, EventArgs e)
         {
-            string rules = "1. You have to create an account to play. \n2. You can play with categories. \n3. Each category has 5 questions before you can choose another category. \n4. Play with sound if possible! \n5. Have fun!";
+            string rules = "1. You have to create an account to play. \n2. You can play with categories. \n3. Each category has 5 questions before you can choose another category. \n4. The user can play the special version of the quiz, in which time goes up and there's no time limit. A wrong answer means +5 seconds added \n5. Play with sound if possible! \n6. Have fun!";
             MessageBox.Show(rules);
         }
 
@@ -112,22 +115,8 @@ namespace _87734_Quizmester
         // pulls up leaderboard without having to log in
         private void btnViewLb_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Press yes to see the category leaderboard, press no to see the normal leaderboard", "Leaderboard Selection", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                // User wants to see the category leaderboard
-                Leaderboard leaderboard = new Leaderboard(true, false, 0);
-                leaderboard.Show();
-                this.Hide();
-            }
-            else
-            {
-                // User wants to see the normal leaderboard
-                Leaderboard leaderboard = new Leaderboard(false, false, 0);
-                leaderboard.Show();
-                this.Hide();
-            }
+            LeaderboardSelection leaderboardSelection = new LeaderboardSelection(this);
+            leaderboardSelection.ShowDialog();
         }
     }
 }

@@ -22,3 +22,4 @@ D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Cus
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Custom_Input_Forms.AddQuestionForm.resources
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Custom_Input_Forms.EditQuestionForm.resources
 D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.Gamemode.resources
+D:\development\87734_Quizmester\87734_Quizmester\obj\Debug\_87734_Quizmester.LeaderboardSelection.resources

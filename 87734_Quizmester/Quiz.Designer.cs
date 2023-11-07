@@ -42,13 +42,10 @@ namespace _87734_Quizmester
             this.tmrQuestion = new System.Windows.Forms.Timer(this.components);
             this.lblQuizName = new System.Windows.Forms.Label();
             this.lblQuestionTime = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRidOfTwo = new System.Windows.Forms.Button();
             this.lblSpecial = new System.Windows.Forms.Label();
             this.pcxCorrectWrong = new System.Windows.Forms.PictureBox();
-            this.menuStrip1.SuspendLayout();
+            this.lblIndex = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcxCorrectWrong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +53,7 @@ namespace _87734_Quizmester
             // 
             this.btnAnswerOne.BackColor = System.Drawing.Color.Linen;
             this.btnAnswerOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswerOne.Location = new System.Drawing.Point(29, 256);
+            this.btnAnswerOne.Location = new System.Drawing.Point(29, 274);
             this.btnAnswerOne.Name = "btnAnswerOne";
             this.btnAnswerOne.Size = new System.Drawing.Size(362, 108);
             this.btnAnswerOne.TabIndex = 0;
@@ -67,7 +64,7 @@ namespace _87734_Quizmester
             // 
             this.btnAnswerTwo.BackColor = System.Drawing.Color.Honeydew;
             this.btnAnswerTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswerTwo.Location = new System.Drawing.Point(411, 256);
+            this.btnAnswerTwo.Location = new System.Drawing.Point(411, 274);
             this.btnAnswerTwo.Name = "btnAnswerTwo";
             this.btnAnswerTwo.Size = new System.Drawing.Size(362, 108);
             this.btnAnswerTwo.TabIndex = 1;
@@ -78,7 +75,7 @@ namespace _87734_Quizmester
             // 
             this.btnAnswerFour.BackColor = System.Drawing.Color.Pink;
             this.btnAnswerFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswerFour.Location = new System.Drawing.Point(411, 370);
+            this.btnAnswerFour.Location = new System.Drawing.Point(411, 388);
             this.btnAnswerFour.Name = "btnAnswerFour";
             this.btnAnswerFour.Size = new System.Drawing.Size(362, 106);
             this.btnAnswerFour.TabIndex = 2;
@@ -89,7 +86,7 @@ namespace _87734_Quizmester
             // 
             this.btnAnswerThree.BackColor = System.Drawing.Color.Lavender;
             this.btnAnswerThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswerThree.Location = new System.Drawing.Point(29, 370);
+            this.btnAnswerThree.Location = new System.Drawing.Point(29, 388);
             this.btnAnswerThree.Name = "btnAnswerThree";
             this.btnAnswerThree.Size = new System.Drawing.Size(362, 108);
             this.btnAnswerThree.TabIndex = 3;
@@ -99,7 +96,7 @@ namespace _87734_Quizmester
             // lblQuestion
             // 
             this.lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestion.Location = new System.Drawing.Point(29, 98);
+            this.lblQuestion.Location = new System.Drawing.Point(29, 117);
             this.lblQuestion.Name = "lblQuestion";
             this.lblQuestion.Size = new System.Drawing.Size(744, 150);
             this.lblQuestion.TabIndex = 4;
@@ -109,7 +106,7 @@ namespace _87734_Quizmester
             // lblScore
             // 
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(666, 25);
+            this.lblScore.Location = new System.Drawing.Point(662, 11);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(100, 26);
             this.lblScore.TabIndex = 5;
@@ -118,7 +115,7 @@ namespace _87734_Quizmester
             // lblTime
             // 
             this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(30, 26);
+            this.lblTime.Location = new System.Drawing.Point(30, 9);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(120, 28);
             this.lblTime.TabIndex = 6;
@@ -134,7 +131,7 @@ namespace _87734_Quizmester
             this.btnSkip.BackColor = System.Drawing.Color.DarkMagenta;
             this.btnSkip.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSkip.ForeColor = System.Drawing.Color.White;
-            this.btnSkip.Location = new System.Drawing.Point(29, 484);
+            this.btnSkip.Location = new System.Drawing.Point(29, 502);
             this.btnSkip.Name = "btnSkip";
             this.btnSkip.Size = new System.Drawing.Size(362, 66);
             this.btnSkip.TabIndex = 7;
@@ -151,7 +148,7 @@ namespace _87734_Quizmester
             // 
             this.lblQuizName.AutoSize = true;
             this.lblQuizName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuizName.Location = new System.Drawing.Point(312, 26);
+            this.lblQuizName.Location = new System.Drawing.Point(316, 9);
             this.lblQuizName.Name = "lblQuizName";
             this.lblQuizName.Size = new System.Drawing.Size(185, 26);
             this.lblQuizName.TabIndex = 8;
@@ -161,42 +158,17 @@ namespace _87734_Quizmester
             // 
             this.lblQuestionTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuestionTime.ForeColor = System.Drawing.Color.Black;
-            this.lblQuestionTime.Location = new System.Drawing.Point(30, 62);
+            this.lblQuestionTime.Location = new System.Drawing.Point(30, 37);
             this.lblQuestionTime.Name = "lblQuestionTime";
             this.lblQuestionTime.Size = new System.Drawing.Size(230, 28);
             this.lblQuestionTime.TabIndex = 9;
             this.lblQuestionTime.Text = "Time left on question: 10";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminPanelToolStripMenuItem});
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // adminPanelToolStripMenuItem
-            // 
-            this.adminPanelToolStripMenuItem.Name = "adminPanelToolStripMenuItem";
-            this.adminPanelToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.adminPanelToolStripMenuItem.Text = "Admin Panel";
-            this.adminPanelToolStripMenuItem.Click += new System.EventHandler(this.adminPanelToolStripMenuItem_Click);
-            // 
             // btnRidOfTwo
             // 
             this.btnRidOfTwo.BackColor = System.Drawing.Color.Cyan;
             this.btnRidOfTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRidOfTwo.Location = new System.Drawing.Point(411, 484);
+            this.btnRidOfTwo.Location = new System.Drawing.Point(411, 502);
             this.btnRidOfTwo.Name = "btnRidOfTwo";
             this.btnRidOfTwo.Size = new System.Drawing.Size(362, 66);
             this.btnRidOfTwo.TabIndex = 11;
@@ -208,7 +180,7 @@ namespace _87734_Quizmester
             // 
             this.lblSpecial.AutoSize = true;
             this.lblSpecial.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecial.Location = new System.Drawing.Point(671, 55);
+            this.lblSpecial.Location = new System.Drawing.Point(671, 46);
             this.lblSpecial.Name = "lblSpecial";
             this.lblSpecial.Size = new System.Drawing.Size(0, 25);
             this.lblSpecial.TabIndex = 12;
@@ -222,12 +194,23 @@ namespace _87734_Quizmester
             this.pcxCorrectWrong.TabIndex = 13;
             this.pcxCorrectWrong.TabStop = false;
             // 
+            // lblIndex
+            // 
+            this.lblIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndex.ForeColor = System.Drawing.Color.Black;
+            this.lblIndex.Location = new System.Drawing.Point(30, 65);
+            this.lblIndex.Name = "lblIndex";
+            this.lblIndex.Size = new System.Drawing.Size(230, 28);
+            this.lblIndex.TabIndex = 14;
+            this.lblIndex.Text = "Question number: 1";
+            // 
             // Quiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 558);
+            this.ClientSize = new System.Drawing.Size(800, 571);
+            this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.pcxCorrectWrong);
             this.Controls.Add(this.lblSpecial);
             this.Controls.Add(this.btnRidOfTwo);
@@ -241,13 +224,9 @@ namespace _87734_Quizmester
             this.Controls.Add(this.btnAnswerFour);
             this.Controls.Add(this.btnAnswerTwo);
             this.Controls.Add(this.btnAnswerOne);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Quiz";
             this.Text = "Quiz";
             this.Load += new System.EventHandler(this.Quiz_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcxCorrectWrong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -268,11 +247,9 @@ namespace _87734_Quizmester
         private System.Windows.Forms.Timer tmrQuestion;
         private System.Windows.Forms.Label lblQuizName;
         private System.Windows.Forms.Label lblQuestionTime;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminPanelToolStripMenuItem;
         private System.Windows.Forms.Button btnRidOfTwo;
         private System.Windows.Forms.Label lblSpecial;
         private System.Windows.Forms.PictureBox pcxCorrectWrong;
+        private System.Windows.Forms.Label lblIndex;
     }
 }

@@ -12,12 +12,20 @@ namespace _87734_Quizmester
 {
     public partial class Gamemode : Form
     {
+        string connectionString = "Server=localhost;Database=quizmester;User=root;Password=;";
         string username;
+        LoginManager loginManager = null;
+
         public Gamemode(string username)
         {
             InitializeComponent();
             this.ControlBox = false;
             this.username = username;
+        }
+
+        private void Gamemode_Load(object sender, EventArgs e)
+        {
+            loginManager = new LoginManager(connectionString);
         }
 
         private void btnNormal_Click(object sender, EventArgs e)
@@ -40,5 +48,18 @@ namespace _87734_Quizmester
             quizform.Show();
             this.Hide();
         }
+
+        private void tsbAdmin_Click(object sender, EventArgs e)
+        {
+            bool isAdmin = loginManager.CheckIfAdmin(username);
+
+            if (isAdmin)
+            {
+                AdminForm adminform = new AdminForm(username);
+                this.Hide();
+                adminform.ShowDialog();
+            }
+            else MessageBox.Show("Forbidden. User not Admin");
+        } 
     }
 }

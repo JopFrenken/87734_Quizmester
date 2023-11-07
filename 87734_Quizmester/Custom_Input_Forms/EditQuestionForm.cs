@@ -70,14 +70,25 @@ namespace _87734_Quizmester.Custom_Input_Forms
                 return;
             }
 
-            bool editedQuestion = adminManager.EditQuestion(questionText, txtQuestion.Text, txtAnswer1.Text, txtAnswer2.Text, txtAnswer3.Text, txtAnswer4.Text, txtCorrect.Text, cmbCategory.SelectedItem.ToString());
+            // Convert answers to lowercase and remove spaces
+            string editedAnswer1 = txtAnswer1.Text.Trim().ToLower();
+            string editedAnswer2 = txtAnswer2.Text.Trim().ToLower();
+            string editedAnswer3 = txtAnswer3.Text.Trim().ToLower();
+            string editedAnswer4 = txtAnswer4.Text.Trim().ToLower();
+            string editedCorrectAnswer = txtCorrect.Text.Trim().ToLower();
+
+            bool editedQuestion = adminManager.EditQuestion(questionText, txtQuestion.Text, editedAnswer1, editedAnswer2, editedAnswer3, editedAnswer4, editedCorrectAnswer, cmbCategory.SelectedItem.ToString());
 
             if (editedQuestion)
             {
                 MessageBox.Show("Question edited successfully.");
                 this.Hide();
             }
-            else MessageBox.Show("Question edit failed");
+            else
+            {
+                MessageBox.Show("Question edit failed");
+            }
         }
+
     }
 }

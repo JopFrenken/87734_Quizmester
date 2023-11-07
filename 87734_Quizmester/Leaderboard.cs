@@ -34,12 +34,16 @@ namespace _87734_Quizmester
             leaderBoardManager = new LeaderboardManager(connectionString);
             entries = leaderBoardManager.GetAllLeaderboardEntries(has_categories, is_special);
             
-            if(!is_special)
-            {
-                entries = entries.OrderByDescending(entry => entry.Score).ToList();
-            } else
+            if(!is_special)  entries = entries.OrderByDescending(entry => entry.Score).ToList();
+            else
             {
                 entries = entries.OrderBy(entry => entry.Score).ToList();
+
+                // change name of column to time
+                DataGridViewTextBoxColumn specialColumn = new DataGridViewTextBoxColumn();
+                specialColumn.HeaderText = "Time";
+                specialColumn.DataPropertyName = "Score";
+                leaderboardView.Columns.Add(specialColumn);
             }
 
             // first 10
@@ -55,6 +59,13 @@ namespace _87734_Quizmester
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void btnViewLeaderboard_Click(object sender, EventArgs e)
+        {
+            LeaderboardSelection leaderboardSelection = new LeaderboardSelection(null);
+            leaderboardSelection.ShowDialog();
+            this.Hide();
         }
     }
 

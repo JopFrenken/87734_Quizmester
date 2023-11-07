@@ -136,16 +136,13 @@ namespace _87734_Quizmester
             questionManager.ResetQuiz();
         }   
 
-        // event for all buttons
+        // event for answer buttons
         private void allButtons_Click(object sender, EventArgs e)
         { 
             // Temporarily disable all buttons to prevent further clicks
             foreach (Control control in Controls)
             {
-                if (control is Button button && button != btnSkip && button != btnRidOfTwo)
-                {
-                    button.Enabled = false;
-                }
+                if (control is Button button && button != btnSkip && button != btnRidOfTwo) button.Enabled = false;
             }
 
             if (sender is Button clickedButton)
@@ -155,12 +152,15 @@ namespace _87734_Quizmester
                 Question currentQuestion = questions[count];
                 count++;
 
+                lblIndex.Text = $"Question number: {count +1f}";
+
                 // this only needs to be done in a normal and category quiz
                 if(!isSpecial)
                 {
                     questionTime = 10;
                     lblQuestionTime.Text = $"Time left on question: {questionTime}";
                     lblQuestionTime.ForeColor = Color.Black;
+                    lblTime.ForeColor = Color.Black;
                 }
 
                 // if correct add score
@@ -202,6 +202,8 @@ namespace _87734_Quizmester
                     if (random == false)
                     {
                         // Prompt the user with a MessageBox
+                        tmrQuiz.Stop();
+                        tmrQuestion.Stop();
                         DialogResult result = MessageBox.Show("Select a new category?\nIf you press 'No', you will end the game and lose progress.", "New Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
@@ -231,10 +233,7 @@ namespace _87734_Quizmester
                     // Re-enable all buttons
                     foreach (Control control in Controls)
                     {
-                        if (control is Button button && button != btnSkip && button != btnRidOfTwo)
-                        {
-                            button.Enabled = true;
-                        }
+                        if (control is Button button && button != btnSkip && button != btnRidOfTwo) button.Enabled = true;
                     }
 
                     // Stop the timer after enabling buttons
@@ -258,6 +257,8 @@ namespace _87734_Quizmester
             btnSkip.Enabled = false;
             btnSkip.BackColor = Color.Gray;
             btnSkip.Text = "Skip Question (0)";
+            lblQuestionTime.ForeColor = Color.Black;
+            lblTime.ForeColor = Color.Black;
         }
 
         // counts down in normal and category quiz, counts up for special quiz
@@ -269,10 +270,13 @@ namespace _87734_Quizmester
                 time--;
                 lblTime.Text = $"Time: {time}";
 
+                if(time == 5) lblTime.ForeColor = Color.Red;
+
                 if (time == 0)
                 {
                     tmrQuiz.Stop();
                     storeLeaderboard(username, score);
+                    lblTime.ForeColor = Color.Black;
 
                     // resets the quiz's used boolean
                     questionManager.ResetQuiz();
@@ -300,26 +304,6 @@ namespace _87734_Quizmester
                 lblQuestionTime.Text = $"Time left on question: {questionTime}";
                 lblQuestionTime.ForeColor = Color.Black;
                 LoadQuestion(count);
-            }
-        }
-
-        private void adminPanelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool isAdmin = loginManager.CheckIfAdmin(username);
-
-            if (isAdmin)
-            {
-                AdminForm adminform = new AdminForm(username);
-                this.Hide();
-                tmrQuestion.Stop();
-                tmrQuiz.Stop();
-                adminform.ShowDialog();
-                tmrQuestion.Start();
-                tmrQuiz.Start();
-            }
-            else
-            {
-                MessageBox.Show("Forbidden. User not Admin");
             }
         }
 
@@ -373,10 +357,7 @@ namespace _87734_Quizmester
             if (index >= 0 && index < questions.Count)
             { 
                 // individual question timer, not in special quiz
-                if(!isSpecial)
-                {
-                    tmrQuestion.Start();
-                }
+                if(!isSpecial) tmrQuestion.Start();
 
                 questionIndex++;
 
@@ -435,21 +416,16 @@ namespace _87734_Quizmester
         public void storeLeaderboard(string username, int score)
         {
             // stores score after the game ended and shows a custom messagebox
-            // 2 seperate leaderboards, 1 for random, 1 for categories
-            if(isSpecial)
+            // 3 seperate leaderboards, 1 for random, 1 for categories and 1 for the special quiz
+            if(isSpecial) leaderboardManager.AddLeaderboardEntry(username, score, false, true); 
+            else
             {
-                leaderboardManager.AddLeaderboardEntry(username, score, false, true);
-            } else
-            {
-                if (random)
-                {
-                    leaderboardManager.AddLeaderboardEntry(username, score, false, false);
-                }
-                else
-                {
-                    leaderboardManager.AddLeaderboardEntry(username, score, true, false);
-                }
+                if (random) leaderboardManager.AddLeaderboardEntry(username, score, false, false);
+                else leaderboardManager.AddLeaderboardEntry(username, score, true, false);
             }
+
+            tmrQuestion.Stop();
+            tmrQuiz.Stop();
 
             string message = "Game ended. Click 'OK' to view the leaderboard.";
             string caption = "Game Over";
@@ -469,10 +445,7 @@ namespace _87734_Quizmester
                 lb.Show();
                 lb.BringToFront();
                 this.Hide();
-            } else
-            {
-                Application.Exit();
-            }
+            } else Application.Exit();
         }
         
         // Fisher-Yates shuffle algorithm
@@ -499,10 +472,7 @@ namespace _87734_Quizmester
                 // Re-enable all buttons
                 foreach (Control control in Controls)
                 {
-                    if (control is Button button && button != btnSkip && button != btnRidOfTwo)
-                    {
-                        button.Enabled = true;
-                    }
+                    if (control is Button button && button != btnSkip && button != btnRidOfTwo) button.Enabled = true;
                 }
 
                 // Stop the timer after enabling buttons

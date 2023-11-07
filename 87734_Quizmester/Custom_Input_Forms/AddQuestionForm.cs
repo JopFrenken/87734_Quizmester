@@ -90,10 +90,10 @@ namespace _87734_Quizmester.Custom_Input_Forms
         // checks if answers are unique.
         private bool AreAnswerOptionsValid()
         {
-            string answer1 = txtAnswer1.Text.Trim();
-            string answer2 = txtAnswer2.Text.Trim();
-            string answer3 = txtAnswer3.Text.Trim();
-            string answer4 = txtAnswer4.Text.Trim();
+            string answer1 = txtAnswer1.Text.Trim().ToLower();
+            string answer2 = txtAnswer2.Text.Trim().ToLower();
+            string answer3 = txtAnswer3.Text.Trim().ToLower();
+            string answer4 = txtAnswer4.Text.Trim().ToLower();
 
             // Check if all answer options are non-empty and unique
             return !string.IsNullOrWhiteSpace(answer1) &&

@@ -33,6 +33,7 @@ namespace _87734_Quizmester
             this.leaderboardView = new System.Windows.Forms.DataGridView();
             this.btnRestart = new System.Windows.Forms.Button();
             this.lblYourScore = new System.Windows.Forms.Label();
+            this.btnViewLeaderboard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leaderboardView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +61,9 @@ namespace _87734_Quizmester
             // 
             this.btnRestart.BackColor = System.Drawing.Color.MistyRose;
             this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestart.Location = new System.Drawing.Point(408, 372);
+            this.btnRestart.Location = new System.Drawing.Point(475, 372);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(263, 66);
+            this.btnRestart.Size = new System.Drawing.Size(196, 66);
             this.btnRestart.TabIndex = 2;
             this.btnRestart.Text = "Restart Game";
             this.btnRestart.UseVisualStyleBackColor = false;
@@ -78,12 +79,25 @@ namespace _87734_Quizmester
             this.lblYourScore.TabIndex = 3;
             this.lblYourScore.Text = "Your Score: ";
             // 
+            // btnViewLeaderboard
+            // 
+            this.btnViewLeaderboard.BackColor = System.Drawing.Color.PowderBlue;
+            this.btnViewLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewLeaderboard.Location = new System.Drawing.Point(264, 372);
+            this.btnViewLeaderboard.Name = "btnViewLeaderboard";
+            this.btnViewLeaderboard.Size = new System.Drawing.Size(196, 66);
+            this.btnViewLeaderboard.TabIndex = 4;
+            this.btnViewLeaderboard.Text = "View other Leaderboards";
+            this.btnViewLeaderboard.UseVisualStyleBackColor = false;
+            this.btnViewLeaderboard.Click += new System.EventHandler(this.btnViewLeaderboard_Click);
+            // 
             // Leaderboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(699, 450);
+            this.Controls.Add(this.btnViewLeaderboard);
             this.Controls.Add(this.lblYourScore);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lblTitle);
@@ -102,5 +116,6 @@ namespace _87734_Quizmester
         private System.Windows.Forms.DataGridView leaderboardView;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Label lblYourScore;
+        private System.Windows.Forms.Button btnViewLeaderboard;
     }
 }

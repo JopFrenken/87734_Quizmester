@@ -127,6 +127,12 @@
     </Compile>
     <Compile Include="LeaderboardEntry.cs" />
     <Compile Include="LeaderboardManager.cs" />
+    <Compile Include="LeaderboardSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaderboardSelection.Designer.cs">
+      <DependentUpon>LeaderboardSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Leaderboard.resx">
       <DependentUpon>Leaderboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaderboardSelection.resx">
+      <DependentUpon>LeaderboardSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
